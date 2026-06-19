@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 稳定入口与页面说明</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background-color: #f5f7fc;
+      color: #1e293b;
+      line-height: 1.7;
+    }
+
+    /* —— hero (深色头图) —— */
+    .hero {
+      background: linear-gradient(145deg, #0f172a 0%, #1e293b 70%, #111827 100%);
+      padding: 5rem 1.5rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background: #f5f7fc;
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+      opacity: 0.3;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #ffffff;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: #cbd5e1;
+      max-width: 640px;
+      margin: 0 auto 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .hero-meta {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      border-top: 1px solid #334155;
+      display: inline-block;
+      padding-top: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    /* —— 正文区（浅色） —— */
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      margin-bottom: 2.8rem;
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #64748b;
+      margin-bottom: 0.4rem;
+    }
+
+    h2 {
+      font-size: 1.7rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: #0f172a;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin: 1.6rem 0 0.6rem;
+      color: #1e293b;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    /* —— 强调色链接 —— */
+    a {
+      color: #2563eb;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    a:hover {
+      color: #1d4ed8;
+      border-bottom-color: #2563eb;
+    }
+
+    /* —— 卡片/优势区 —— */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 1.8rem 0;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.8rem 1.5rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.03);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #334155;
+    }
+
+    .card-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.2rem;
+    }
+
+    /* —— 说明区（混合段落） —— */
+    .note-box {
+      background: #ffffff;
+      border-left: 4px solid #2563eb;
+      padding: 1.5rem 1.8rem;
+      border-radius: 0 14px 14px 0;
+      margin: 1.6rem 0;
+    }
+
+    .note-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* —— FAQ 摘要 —— */
+    .faq-summary {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.6rem 2rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+    }
+
+    .faq-item {
+      padding: 0.9rem 0;
+      border-bottom: 1px solid #e9edf4;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      font-size: 1.05rem;
+      color: #0f172a;
+      margin-bottom: 0.25rem;
+    }
+
+    .faq-a {
+      color: #475569;
+      font-size: 0.95rem;
+    }
+
+    /* —— 底部链接 —— */
+    .footer-links {
+      margin-top: 3rem;
+      padding: 2rem 0 3rem;
+      border-top: 1px solid #dce2ec;
+      text-align: center;
+      font-size: 0.95rem;
+      color: #64748b;
+    }
+
+    .footer-links a {
+      margin: 0 0.3rem;
+    }
+
+    /* —— 响应式 —— */
+    @media (max-width: 680px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .note-box {
+        padding: 1.2rem;
+      }
+
+      .faq-summary {
+        padding: 1.2rem;
+      }
+
+      .hero {
+        padding: 3.5rem 1.2rem 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- hero 区 -->
+  <header class="hero">
+    <h1>爱游戏 · 稳定入口</h1>
+    <p>一个安静的页面，用来了解、回顾和进入爱游戏。没有纷扰的跳转，只有清晰的说明与路径。</p>
+    <div class="hero-meta">持续维护 · 信息整合 · 2025</div>
+  </header>
+
+  <!-- 正文区 -->
+  <div class="container">
+
+    <!-- 优势区：卡片 -->
+    <section>
+      <div class="section-label">· 定位</div>
+      <h2>为什么需要稳定入口</h2>
+      <p>很多站点在时间中悄然改变链接、丢失说明，或者被层层导航淹没。爱游戏希望保留一处结构稳定的页面，既能快速抵达，也能清楚知道自己在使用什么。</p>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon">📌</div>
+          <h3>直达，不绕路</h3>
+          <p>页面直接承载指向 <a href="https://index-m-i-game.com.cn">爱游戏</a> 的链接，无需在多个中间页里寻找。入口明确，减少记忆负担。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📄</div>
+          <h3>附有说明</h3>
+          <p>不仅仅是链接，还附带关于内容、兼容性和常见疑问的摘要。你可以先读后到，减少未知感。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔒</div>
+          <h3>克制可信</h3>
+          <p>不堆砌诱导文案，不夸大功能。只呈现事实：这是爱游戏的索引页，供你按需使用。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🧭</div>
+          <h3>长期维护</h3>
+          <p>作为一份轻量的落地页，它会跟随爱游戏的变化做调整，保持链接有效与信息准确。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 说明区：从页面说明的角度展开 -->
+    <section>
+      <div class="section-label">· 说明</div>
+      <h2>关于这个页面</h2>
+      <p>这个页面是为 <strong>index-m-i-game.com.cn</strong> 编写的一份介绍与入口说明。它不是一个功能完整的应用，而是一段带叙述的索引——你可以在阅读后决定是否前往。</p>
+
+      <div class="note-box">
+        <p><strong>一句话概括：</strong> 这里存放着你需要知道的关于爱游戏的基本信息，以及一个可点击的链接：<a href="https://index-m-i-game.com.cn">爱游戏</a>。没有复杂的注册引导，也没有弹窗干扰。</p>
+      </div>
+
+      <p>爱游戏本身是一个围绕游戏内容组织的索引站点，提供分类、推荐与导航。本页的存在，是为了让第一次接触或偶尔回来的人，能快速重温它的定位，并从一个稳定的地址进入。</p>
+
+      <h3>使用场景</h3>
+      <p>当你需要向朋友介绍爱游戏，或者自己想从一处干净的页面重新进入时，这个落地页可以作为起点。它不替代爱游戏本身，而是作为路标和说明牌。</p>
+    </section>
+
+    <!-- FAQ 摘要 -->
+    <section>
+      <div class="section-label">· 常见疑问</div>
+      <h2>FAQ 摘要</h2>
+      <div class="faq-summary">
+        <div class="faq-item">
+          <div class="faq-q">爱游戏需要注册吗？</div>
+          <div class="faq-a">爱游戏是公开的索引页面，直接访问即可使用内容导航，不需要注册或登录。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">这个页面和爱游戏是什么关系？</div>
+          <div class="faq-a">本页是爱游戏的独立介绍与入口页，帮助访问者了解站点概况。你可以通过其中的链接直接前往爱游戏。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">链接会变吗？</div>
+          <div class="faq-a">目前指向 <a href="https://index-m-i-game.com.cn">爱游戏</a> 的链接是长期维护的。如果未来地址有变化，本页会同步更新说明。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">我能在手机上用吗？</div>
+          <div class="faq-a">可以。爱游戏和本页都适配移动设备，版面会根据屏幕宽度自动调整。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 底部链接 -->
+    <footer class="footer-links">
+      <p>如果你准备好了，可以直接前往 <a href="https://index-m-i-game.com.cn">爱游戏</a> 。<br>或者先收藏本页，之后再用。</p>
+      <p style="margin-top: 1.2rem; font-size: 0.85rem; color: #94a3b8;">爱游戏 · 稳定入口 · 页面说明</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
