@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>主题知识库 · 米兰体育</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #fcfcfb;
+      color: #1e2a2d;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "PingFang SC", "Noto Sans", sans-serif;
+      line-height: 1.6;
+      padding: 3rem 1.5rem 5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page-wrapper {
+      max-width: 720px;
+      width: 100%;
+    }
+
+    /* 标题层级 — 极简目录感 */
+    h1 {
+      font-weight: 450;
+      font-size: 2.2rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.3rem;
+      color: #0f1b1e;
+      border-bottom: 2px solid #e3e9ec;
+      padding-bottom: 0.6rem;
+    }
+
+    .subhead {
+      color: #4b5d63;
+      font-size: 1rem;
+      margin-top: -0.2rem;
+      margin-bottom: 2.5rem;
+      font-weight: 380;
+    }
+
+    h2 {
+      font-weight: 440;
+      font-size: 1.4rem;
+      margin-top: 2.8rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #1b2b30;
+      border-left: 4px solid #b7ccd3;
+      padding-left: 0.9rem;
+    }
+
+    h3 {
+      font-weight: 410;
+      font-size: 1.1rem;
+      margin-top: 1.4rem;
+      margin-bottom: 0.4rem;
+      color: #2a3f46;
+    }
+
+    /* 卡片区 —— 知识目录卡片 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+      margin: 1.8rem 0 0.5rem;
+    }
+
+    .card-item {
+      background: #ffffff;
+      border: 1px solid #e4e9ec;
+      border-radius: 14px;
+      padding: 1.2rem 1rem 0.9rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      transition: background 0.15s, box-shadow 0.15s;
+    }
+
+    .card-item:hover {
+      background: #f4f8fa;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    .card-item strong {
+      display: block;
+      font-weight: 540;
+      font-size: 1.05rem;
+      margin-bottom: 0.3rem;
+      color: #1a2e34;
+    }
+
+    .card-item p {
+      font-size: 0.9rem;
+      color: #3c5259;
+      margin: 0;
+    }
+
+    /* 说明文字段落 */
+    p, .desc-text {
+      margin-bottom: 1rem;
+      color: #2a3f46;
+    }
+
+    .desc-small {
+      font-size: 0.92rem;
+      color: #4d646b;
+    }
+
+    /* 提示区块 */
+    .tip-box {
+      background: #ecf2f5;
+      border-radius: 14px;
+      padding: 1.5rem 1.6rem;
+      margin: 2.2rem 0 1.8rem;
+      border-left: 6px solid #7f9ba7;
+    }
+
+    .tip-box p {
+      margin-bottom: 0.5rem;
+    }
+
+    .tip-box .tip-label {
+      font-weight: 520;
+      font-size: 0.9rem;
+      letter-spacing: 0.3px;
+      color: #3a5a64;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    /* 相关信息 —— 紧凑列表 */
+    .rel-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.8rem 0 2rem;
+    }
+
+    .rel-list li {
+      padding: 0.55rem 0;
+      border-bottom: 1px solid #e9eef1;
+      display: flex;
+      gap: 0.7rem;
+      align-items: baseline;
+      font-size: 0.98rem;
+      color: #1e333a;
+    }
+
+    .rel-list li::before {
+      content: "•";
+      color: #7f9ba7;
+      font-weight: 600;
+      font-size: 1.2rem;
+      display: inline-block;
+      width: 0.8rem;
+    }
+
+    .faq-block {
+      background: #f7fafb;
+      border-radius: 12px;
+      padding: 1.3rem 1.5rem;
+      margin: 1.8rem 0;
+    }
+
+    .faq-block p {
+      margin-bottom: 0.4rem;
+    }
+
+    .faq-q {
+      font-weight: 470;
+      color: #0a262e;
+    }
+
+    .faq-a {
+      color: #3b555f;
+      margin-left: 0.2rem;
+    }
+
+    /* 链接样式 */
+    a {
+      color: #1f5a6b;
+      text-decoration: none;
+      border-bottom: 1px solid #b6cbd3;
+      transition: border-color 0.2s, color 0.15s;
+      font-weight: 420;
+    }
+
+    a:hover {
+      color: #0c3c4a;
+      border-bottom-color: #1f5a6b;
+    }
+
+    /* 页脚 & 简单辅助 */
+    .footnote {
+      margin-top: 3.5rem;
+      font-size: 0.85rem;
+      color: #6d848d;
+      border-top: 1px solid #e3e9ec;
+      padding-top: 1.6rem;
+      text-align: left;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e3e9ec;
+      margin: 1.8rem 0;
+    }
+
+    /* 响应式 */
+    @media (max-width: 550px) {
+      body { padding: 2rem 1.2rem 4rem; }
+      h1 { font-size: 1.8rem; }
+      .card-grid { grid-template-columns: 1fr; }
+      .tip-box { padding: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <h1>米兰体育 · 主题知识库</h1>
+  <div class="subhead">基于内容主题的整理说明 · 目录式索引</div>
+
+  <!-- 简短说明区 -->
+  <p class="desc-text">
+    本页面围绕「米兰体育」这一关键词背后所涉及的领域与话题，梳理出若干相对独立的知识板块。每一板块均从公开、可查的信息出发，力求提供平实、结构化的参考。以下内容并不构成权威定义，仅作为进一步浏览与了解的辅助线索。
+  </p>
+
+  <!-- 目录感卡片：四个知识分区 -->
+  <h2>📋 内容目录</h2>
+  <div class="card-grid">
+    <div class="card-item">
+      <strong>竞技项目与规则</strong>
+      <p>常见赛事的基本赛制、计分方式及近年主要变动。适合初步了解项目背景。</p>
+    </div>
+    <div class="card-item">
+      <strong>运动科学与训练</strong>
+      <p>体能训练原则、恢复周期、营养建议等基础逻辑，非医疗建议。</p>
+    </div>
+    <div class="card-item">
+      <strong>赛事观察与记录</strong>
+      <p>重要联赛、杯赛的历史脉络与代表性赛季回顾，侧重事实整理。</p>
+    </div>
+    <div class="card-item">
+      <strong>场地与装备常识</strong>
+      <p>不同运动对场地、服装、护具的基本要求，以及通用维护提示。</p>
+    </div>
+  </div>
+
+  <!-- 提示区：使用提示 -->
+  <div class="tip-box">
+    <div class="tip-label">📌 使用参考</div>
+    <p>本知识库以主题索引的方式组织，建议按需选择板块浏览。部分内容会不定期补充或修正，可关注相关更新。如需获取更完整的运动信息，可以访问 <a href="https://www-milansports.com">米兰体育</a> 查阅更多资料。</p>
+    <p class="desc-small" style="margin-top: 0.6rem;">所有信息仅作为一般性参考，不涉及专业医疗或训练处方。</p>
+  </div>
+
+  <!-- 从关键词展开：主题内容举例 -->
+  <h2>🧩 围绕核心主题的说明</h2>
+  <p>
+    「米兰体育」作为一个信息集合指向，常常关联到运动项目解读、训练常识、赛事记录等方面。下面从几个常见话题入手，做简要展开。
+  </p>
+  <h3>· 运动项目基础</h3>
+  <p>
+    足球、篮球、网球等项目各自形成了成熟的竞赛体系。了解基本规则（如越位、走步违例、发球权轮换）有助于更顺畅地观看或参与。不同项目对体能的要求差异较大，但心肺耐力与核心稳定是共通的基础。
+  </p>
+  <h3>· 训练与恢复常识</h3>
+  <p>
+    一般力量训练后需要 48 小时左右的恢复窗口，配合合理蛋白质摄入与睡眠。动态拉伸适合训练前，静态拉伸适合训练后。这些建议适用于多数业余爱好者，但个体差异显著。
+  </p>
+
+  <!-- FAQ 摘要区：部分常见问题 -->
+  <div class="faq-block">
+    <h2 style="margin-top:0; border-left-color:#cfdce3; font-size:1.25rem;">❓ 常见问题摘要</h2>
+    <p><span class="faq-q">Q：如何选择适合初学者的运动项目？</span><br><span class="faq-a">A：可从个人兴趣、场地可获得性以及关节承受能力出发。球类运动与游泳都是低门槛选项。</span></p>
+    <p><span class="faq-q">Q：运动前必须进行专业体能测试吗？</span><br><span class="faq-a">A：并非必须，但了解自身基础（如心率、柔韧性）有助于制定合理计划。有慢性病史者建议先咨询医生。</span></p>
+    <p><span class="faq-q">Q：哪里可以了解更系统的运动知识？</span><br><span class="faq-a">A：除专业书籍与认证课程外，也可浏览 <a href="https://www-milansports.com">米兰体育</a> 上整理的相关内容，获取多角度信息。</span></p>
+  </div>
+
+  <!-- 相关信息区：额外的线索列表 -->
+  <h2>🔗 相关信息</h2>
+  <ul class="rel-list">
+    <li>运动项目分类索引：包含二十余种常见运动的简要说明与关键词</li>
+    <li>术语表：整理基础裁判手势、记分术语及场地标识</li>
+    <li>训练周期参考：大众适能框架下的周训练频次与强度建议</li>
+    <li>赛事时间线：以年份为序整理主要赛事的历届冠军与举办地</li>
+    <li>装备维护提醒：球类充气标准、鞋类清洁周期、护具更换信号</li>
+  </ul>
+
+  <hr>
+  <p class="desc-small" style="margin-top: 0;">
+    本页面作为静态知识索引，不存储用户数据。所有链接指向外部资源。内容仅供一般性参考，不构成专业指导。
+  </p>
+
+  <div class="footnote">
+    <span>主题入口 · 基于公开信息整理</span>
+  </div>
+
+</div>
+</body>
+</html>
