@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>一竞技 · 稳定衔接的认知入口</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f9fafc;
+            font-family: "Inter", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* 深色头图 —— 稳重的叙事入口 */
+        .hero {
+            background: linear-gradient(145deg, #0f172a 0%, #1e2a4a 60%, #1c2a4d 100%);
+            color: #f1f5f9;
+            padding: 5rem 2rem 3.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 -2px 12px rgba(0,0,0,0.1);
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: -40%;
+            left: -15%;
+            width: 60%;
+            height: 180%;
+            background: radial-gradient(circle at 30% 40%, rgba(99, 149, 255, 0.06), transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 550;
+            letter-spacing: 2px;
+            word-break: keep-all;
+            background: linear-gradient(to right, #e8edf8, #b9cefc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .tagline {
+            font-size: 1.25rem;
+            font-weight: 330;
+            max-width: 720px;
+            margin: 0 auto;
+            color: #cbd5e1;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .tagline span {
+            display: inline-block;
+            border-bottom: 2px solid #6490e8;
+            padding-bottom: 2px;
+        }
+
+        .hero .meta-note {
+            margin-top: 1.8rem;
+            font-size: 0.9rem;
+            color: #8498bb;
+            letter-spacing: 1px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding-top: 1.8rem;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 正文区 —— 浅色，柔和留白 */
+        .content {
+            max-width: 1000px;
+            width: 90%;
+            margin: -1.2rem auto 2rem auto;
+            background: #ffffff;
+            border-radius: 28px 28px 18px 18px;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.03), 0 4px 12px rgba(0, 0, 0, 0.02);
+            padding: 2.8rem 3rem;
+            position: relative;
+            z-index: 2;
+            flex: 1 0 auto;
+        }
+
+        /* 承接段落，温和铺陈 */
+        .content p {
+            margin-bottom: 1.6rem;
+            font-size: 1.05rem;
+            color: #1d2b3f;
+        }
+
+        .content p:first-of-type {
+            font-size: 1.1rem;
+            margin-top: 0.2rem;
+        }
+
+        .content p a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 510;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+            padding-bottom: 0.1rem;
+        }
+
+        .content p a:hover {
+            color: #1e40af;
+            border-bottom-color: #2563eb;
+        }
+
+        /* 特点列表 —— 卡片化，克制但清晰 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.8rem;
+            margin: 2.4rem 0 2rem 0;
+        }
+
+        .feature-item {
+            background: #f7f9fe;
+            border-radius: 24px;
+            padding: 1.6rem 1.2rem 1.4rem 1.2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #eef2f9;
+            transition: transform 0.1s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-2px);
+            background: #f5f8ff;
+        }
+
+        .feature-item h3 {
+            font-size: 1.2rem;
+            font-weight: 540;
+            margin-bottom: 0.7rem;
+            color: #0c1a33;
+            letter-spacing: 0.3px;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #334155;
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        .feature-item .feat-icon {
+            display: inline-block;
+            background: #dce6fd;
+            border-radius: 30px;
+            width: 34px;
+            height: 34px;
+            line-height: 34px;
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #1f3a7a;
+        }
+
+        /* 温和的 FAQ 摘要区域 (简洁) */
+        .faq-mini {
+            background: #f2f6fe;
+            padding: 1.8rem 2rem;
+            border-radius: 24px;
+            margin: 2.5rem 0 1rem 0;
+        }
+
+        .faq-mini h4 {
+            font-weight: 540;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: #0f1f44;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .faq-mini h4::before {
+            content: "❓";
+            font-size: 1.1rem;
+        }
+
+        .faq-mini details {
+            margin: 0.8rem 0 0.3rem 0;
+            border-bottom: 1px solid #e3eaf9;
+            padding-bottom: 0.6rem;
+        }
+
+        .faq-mini details:last-of-type {
+            border-bottom: none;
+        }
+
+        .faq-mini summary {
+            font-weight: 470;
+            cursor: pointer;
+            color: #1e2b4b;
+            padding: 0.45rem 0;
+            transition: color 0.1s;
+        }
+
+        .faq-mini summary::-webkit-details-marker {
+            color: #4b70c0;
+        }
+
+        .faq-mini summary:hover {
+            color: #1e40af;
+        }
+
+        .faq-mini details[open] summary {
+            color: #0f2a62;
+        }
+
+        .faq-mini .faq-answer {
+            padding: 0.6rem 0.5rem 0.2rem 1.2rem;
+            font-size: 0.95rem;
+            color: #2c3e5c;
+            border-left: 3px solid #a2bcfa;
+            margin-top: 0.25rem;
+        }
+
+        /* 温和结尾 */
+        .closing {
+            margin: 2.4rem 0 0.8rem 0;
+            border-top: 1px solid #e3eaf3;
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 1.05rem;
+            color: #31486b;
+        }
+
+        .closing strong {
+            font-weight: 530;
+            color: #18315c;
+        }
+
+        .closing .soft-arrow {
+            display: inline-block;
+            margin: 0 8px;
+            color: #7d94c5;
+        }
+
+        /* 底边信息 */
+        .footer-note {
+            font-size: 0.82rem;
+            color: #7d8fae;
+            margin-top: 2rem;
+            padding: 0.2rem 0 1.2rem 0;
+            text-align: center;
+            border-top: 1px solid #eaeef6;
+            padding-top: 1.5rem;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 700px) {
+            .hero {
+                padding: 3.2rem 1.5rem 2.8rem 1.5rem;
+            }
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+            .content {
+                padding: 2rem 1.5rem;
+                margin-top: -0.6rem;
+                width: 95%;
+                border-radius: 20px;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .faq-mini {
+                padding: 1.5rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 460px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .content p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1>一竞技</h1>
+        <p class="tagline">
+            稳定的信息入口，是理解一件事物的<span>起点</span>。<br>
+            我们不追逐瞬息万变的浪潮，而是构建可回访的认知锚点。
+        </p>
+        <div class="meta-note">· 叙述 · 结构 · 连续性</div>
+    </header>
+
+    <main class="content">
+        <!-- 承接段落：从稳定入口切入 -->
+        <p>
+            每一次浏览都像一次简短对话。如果你正在寻找一个能够系统提供竞技资讯与内容梳理的场所，那么 
+            <a href="https://chs-1jingji.com">一竞技</a> 
+            或许是一个值得留意的坐标。这里没有浮夸的标语，只有持续维护的内容脉络与清晰的功能分区。
+        </p>
+
+        <p>
+            人们常常低估“稳定入口”的价值——一个始终如一、响应可靠的页面，能让注意力集中在信息本身，而非反复适应界面变化。 
+            一竞技在视觉与结构上遵循克制的秩序，把叙事节奏交给内容，而非装饰。
+        </p>
+
+        <!-- 特点列表：温和展示价值点 -->
+        <div class="feature-grid">
+            <div class="feature-item">
+                <div class="feat-icon">📋</div>
+                <h3>条目清晰</h3>
+                <p>不堆砌冗余模块，分类符合直觉，信息层级一目了然。</p>
+            </div>
+            <div class="feature-item">
+                <div class="feat-icon">🧭</div>
+                <h3>可回溯</h3>
+                <p>页面结构与链接关系长期稳定，便于你随时返回查阅、对比。</p>
+            </div>
+            <div class="feature-item">
+                <div class="feat-icon">⚖️</div>
+                <h3>中性笔调</h3>
+                <p>内容陈述以事实与逻辑为主，避免情绪化渲染与过度承诺。</p>
+            </div>
+            <div class="feature-item">
+                <div class="feat-icon">📐</div>
+                <h3>一致体验</h3>
+                <p>在不同设备上浏览时，排版与交互保持统一的节奏感。</p>
+            </div>
+        </div>
+
+        <!-- 过渡：从特点到使用场景 -->
+        <p>
+            无论你是初次接触，还是希望定期获取有条理的资讯，稳定的页面结构都能降低认知负荷。
+            一竞技在内容组织上偏向渐进式：先提供概括性视角，再展开具体条目，
+            这种铺陈方式适合从了解概貌到深入细节的阅读习惯。
+        </p>
+
+        <!-- FAQ 摘要 —— 两个常见疑问 -->
+        <div class="faq-mini">
+            <h4>常见关注点</h4>
+            <details>
+                <summary>这个平台的内容更新频率如何？</summary>
+                <div class="faq-answer">
+                    内容保持周期性维护，重点信息源经过筛选与整理，避免碎片化刷屏。具体更新节奏以页面实际呈现为准。
+                </div>
+            </details>
+            <details>
+                <summary>页面是否针对移动端做了适配？</summary>
+                <div class="faq-answer">
+                    是的。排版采用响应式设计，在手机与平板上均可获得舒适的阅读体验，菜单与卡片布局会自适应调整。
+                </div>
+            </details>
+            <details>
+                <summary>我可以从哪里开始浏览？</summary>
+                <div class="faq-answer">
+                    建议从主导航或最新内容列表入手。如果你想直接访问首页，链接指向的就是 
+                    <a href="https://chs-1jingji.com" style="border-bottom: 1px dashed #6080d0;">一竞技</a> 
+                    的主要页面。
+                </div>
+            </details>
+        </div>
+
+        <!-- 温和结尾 -->
+        <div class="closing">
+            <strong>一竞技</strong> 
+            <span class="soft-arrow">·</span> 
+            以稳定的存在，成为你信息路径上的一处安静关口。
+            <span class="soft-arrow">·</span> 
+            不喧哗，不摇移。
+        </div>
+
+        <div class="footer-note">
+            页面内容仅作介绍示意 · 实际信息请以网站呈现为准
+        </div>
+    </main>
+</body>
+</html>
